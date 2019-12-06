@@ -1,6 +1,6 @@
 <script>
   import { emptyTodo, markAsDone } from './todo.js';
-  import { TodoRepository } from './todoList.js';
+  import { TodoRepository } from './TodoRepository.js';
 
   let repository = new TodoRepository();
   let currentTodo = emptyTodo();
@@ -26,7 +26,6 @@
     repository.update(markAsDone(todo));
     updateTodos();
   };
-
 </script>
 
 <style>
