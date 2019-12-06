@@ -1,0 +1,27 @@
+{
+  "name": "concise-test-todo-example",
+  "version": "1.0.0",
+  "description": "An example codebase that's used in the book Build Your Own Test Framework",
+  "main": "index.js",
+  "scripts": {
+    "test": "node test/tests.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dirv/concise-test-todo-example.git"
+  },
+  "keywords": [
+    "testing",
+    "javascript",
+    "concise-test"
+  ],
+  "author": "Daniel Irvine",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/dirv/concise-test-todo-example/issues"
+  },
+  "homepage": "https://github.com/dirv/concise-test-todo-example#readme",
+  "devDependencies": {
+  },
+  "type": "module"
+}
