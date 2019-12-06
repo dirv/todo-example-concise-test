@@ -1,24 +1,30 @@
-let todos = [];
-
-const matchingTodo = ({ title }) =>
-  todos.find(todo => todo.title === title);
-
-export const add = todo => {
-  if (!todo || !todo.title || todo.title === "") {
-    throw new Error("title cannot be blank");
+export class TodoRepository {
+  constructor() {
+    this.todos = [];
   }
-  if (matchingTodo(todo)) {
-    throw new Error("that todo already exists");
+
+  add(todo) {
+    if (!todo || !todo.title || todo.title === "") {
+      throw new Error("title cannot be blank");
+    }
+    if (this.matchingTodo(todo)) {
+      throw new Error("todo already exists");
+    }
+    this.todos = [ ...this.todos, todo ];
   }
-  todos = [ ...todos, todo ];
-};
 
-export const findAllMatching = title =>
-  todos.filter(t => t.title.includes(title));
+  findAllMatching(title) {
+    return this.todos.filter(t => t.title.includes(title));
+  }
 
-export const update = updatedTodo => {
-  todos = [
-    ...todos.filter(todo => todo.title !== updatedTodo.title),
-    updatedTodo
-  ];
+  update(updatedTodo) {
+    this.todos = [
+      ...this.todos.filter(todo => todo.title !== updatedTodo.title),
+      updatedTodo
+    ];
+  }
+
+  matchingTodo({ title }) {
+    this.todos.find(todo => todo.title === title);
+  }
 };

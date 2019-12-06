@@ -1,15 +1,16 @@
 <script>
   import { emptyTodo, markAsDone } from './todo.js';
-  import { add, findAllMatching, update } from './todoList.js';
+  import { TodoRepository } from './todoList.js';
 
+  let repository = new TodoRepository();
   let currentTodo = emptyTodo();
   let filter = '';
-  let todos = findAllMatching(filter);
+  let todos = repository.findAllMatching(filter);
 
   const handleAdd = e => {
     e.preventDefault();
     try {
-      add(currentTodo);
+      repository.add(currentTodo);
       currentTodo = emptyTodo();
       updateTodos();
     } catch (e) {
@@ -18,11 +19,11 @@
   };
 
   const updateTodos = () => {
-    todos = findAllMatching(filter);
+    todos = repository.findAllMatching(filter);
   };
 
   const markAsDoneAndUpdate = todo => {
-    update(markAsDone(todo));
+    repository.update(markAsDone(todo));
     updateTodos();
   };
 
