@@ -25,6 +25,6 @@ export class TodoRepository {
   }
 
   matchingTodo({ title }) {
-    this.todos.find(todo => todo.title === title);
+    return this.todos.find(todo => todo.title === title);
   }
 };
