@@ -4,7 +4,10 @@
   "description": "An example codebase that's used in the book Build Your Own Test Framework",
   "main": "index.js",
   "scripts": {
-    "test": "node test/tests.js"
+    "test": "node test/tests.js",
+    "build": "rollup -c",
+    "dev": "rollup -c -w",
+    "start": "sirv public"
   },
   "repository": {
     "type": "git",
@@ -20,5 +23,12 @@
   "bugs": {
     "url": "https://github.com/dirv/concise-test-todo-example/issues"
   },
-  "homepage": "https://github.com/dirv/concise-test-todo-example#readme"
+  "homepage": "https://github.com/dirv/concise-test-todo-example#readme",
+  "devDependencies": {
+    "rollup": "^1.27.8",
+    "rollup-plugin-node-resolve": "^5.2.0",
+    "rollup-plugin-svelte": "^5.1.1",
+    "sirv-cli": "^0.4.5",
+    "svelte": "^3.16.0"
+  }
 }
