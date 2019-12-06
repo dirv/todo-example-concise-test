@@ -30,5 +30,6 @@
     "rollup-plugin-svelte": "^5.1.1",
     "sirv-cli": "^0.4.5",
     "svelte": "^3.16.0"
-  }
+  },
+  "type": "module"
 }
