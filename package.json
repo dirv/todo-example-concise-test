@@ -4,7 +4,7 @@
   "description": "An example codebase that's used in the book Build Your Own Test Framework",
   "main": "index.js",
   "scripts": {
-    "test": "node test/tests.js"
+    "test": "concise-test"
   },
   "repository": {
     "type": "git",
