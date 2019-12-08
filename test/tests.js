@@ -1,6 +1,6 @@
 import { emptyTodo, markAsDone } from "../src/todo.js";
 import { TodoRepository } from "../src/todoRepository.js";
-import { describe, it } from "concise-test";
+import { beforeEach, describe, it } from "concise-test";
 
 describe("todo", () => {
   it("sets completedAt when calling markAsDone", () => {
@@ -14,10 +14,15 @@ describe("todo", () => {
 });
 
 describe("TodoRepository", () => {
+  const newTodo = { ...emptyTodo(), title: "test" };
+  let repository;
+
+  beforeEach(() => {
+    repository = new TodoRepository();
+  });
+
   describe("add", () => {
     it("throws an exception when adding a todo without a title", () => {
-      const repository = new TodoRepository();
-
       try {
         repository.add(emptyTodo());
         throw new Error(
@@ -33,10 +38,8 @@ describe("TodoRepository", () => {
 
     it("throws errors when adding a repeated todo", () => {
       throw new Error("blah blah");
-      const repository = new TodoRepository();
-      const newTodo = { ...emptyTodo(), title: "test" };
-      repository.add(newTodo);
 
+      repository.add(newTodo);
       const repeatedTodo = { ...newTodo };
       try {
         repository.add(repeatedTodo);
@@ -53,21 +56,17 @@ describe("TodoRepository", () => {
   });
 
   describe("findAllMatching", () => {
-    it("finds an added todo", () => {
-      const repository = new TodoRepository();
-      const newTodo = { ...emptyTodo(), title: "test" };
+    beforeEach(() => {
       repository.add(newTodo);
+    });
 
+    it("finds an added todo", () => {
       if (repository.findAllMatching("").length !== 1)
         throw new Error("added todo was not returned");
     });
 
     it("filters out todos that do not match filter", () => {
       throw new Error("blah blah");
-      const repository = new TodoRepository();
-      const newTodo = { ...emptyTodo(), title: "test" };
-      repository.add(newTodo);
-
       if (
         repository.findAllMatching("some other test")
           .length !== 0
