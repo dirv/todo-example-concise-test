@@ -7,7 +7,9 @@ An example codebase that's used in the book [Build Your Own Test Framework](http
 
 Hello! 👋
 
-If you're joining the workshop on Dec 10, 2019, you can get a headstart by following these instructions. The four steps are:
+If you're joining the workshop on Dec 10, 2019, you can get a headstart by following these instructions. It's four steps, and it should take about 10 minutes in total.
+
+The four steps are:
 
 - [ ] Upgrade to (or install) Node version 13.2
 - [ ] Fork this repo and clone it to your local machine
@@ -70,4 +72,4 @@ This workshop we'll be building out *both* the `todo-example-concise-test` and `
 
 The `todo-example-concise-test` project is like our scaffold, and will allow us to manually test the constructs we make in `concise-test`. As we build more and more features into `concise-test`, we'll update `concise-test-todo-example` to use those features.
 
-You can see where we're going to end up by looking at the `with-concise-test` branch of this repo.
+You can see where we're going to end up by looking at the [`with-concise-test`](https://github.com/dirv/todo-example-concise-test/tree/with-concise-test) branch of this repo.
