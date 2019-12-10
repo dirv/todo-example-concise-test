@@ -19,12 +19,6 @@ try {
 const newTodo = { ...emptyTodo(), title: "test" };
 repository.add(newTodo);
 
-if (repository.findAllMatching('').length !== 1)
-  throw new Error("added todo was not returned");
-
-if (repository.findAllMatching('some other test').length !== 0)
-  throw new Error("filter was not applied when finding matches");
-
 const repeatedTodo = { ...newTodo };
 try {
   repository.add(repeatedTodo);
@@ -33,3 +27,9 @@ try {
   if (e.message !== "todo already exists")
     throw new Error("wrong message in guard clause when adding an existing todo");
 }
+
+if (repository.findAllMatching('').length !== 1)
+  throw new Error("added todo was not returned");
+
+if (repository.findAllMatching('some other test').length !== 0)
+  throw new Error("filter was not applied when finding matches");
