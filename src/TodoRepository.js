@@ -11,6 +11,7 @@ export class TodoRepository {
       throw new Error("todo already exists");
     }
     this.todos = [ ...this.todos, todo ];
+    return true;
   }
 
   findAllMatching(title) {
