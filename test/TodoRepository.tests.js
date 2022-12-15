@@ -4,7 +4,7 @@ import { beforeEach, describe, expect, it } from "concise-test";
 
 import * as examples from "./list.shared.tests.js";
 
-describe("TodoRepository", () => {
+describe("TodoRepository", { tags: [ "doesn't match" ] }, () => {
   const newTodo = { ...emptyTodo(), title: "test" };
   let repository;
 
@@ -18,7 +18,7 @@ describe("TodoRepository", () => {
   }));
 
   describe("add", () => {
-    it("throws an exception when adding a todo without a title", () => {
+    it("throws an exception when adding a todo without a title", { tags: ["todo", "asnot"] }, () => {
       expect(() => repository.add(emptyTodo()))
         .toThrow(new Error("title cannot be blank"))
     });
