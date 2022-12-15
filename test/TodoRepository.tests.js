@@ -2,6 +2,8 @@ import { emptyTodo } from "../src/todo.js";
 import { TodoRepository } from "../src/todoRepository.js";
 import { beforeEach, describe, expect, it } from "concise-test";
 
+import * as examples from "./list.shared.tests.js";
+
 describe("TodoRepository", () => {
   const newTodo = { ...emptyTodo(), title: "test" };
   let repository;
@@ -9,6 +11,11 @@ describe("TodoRepository", () => {
   beforeEach(() => {
     repository = new TodoRepository();
   });
+
+  it.behavesLike("a list", () => ({
+    type: repository,
+    entry: newTodo
+  }));
 
   describe("add", () => {
     it("throws an exception when adding a todo without a title", () => {
