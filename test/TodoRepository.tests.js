@@ -1,6 +1,15 @@
+import { beforeEach, describe, expect, it, registerMock, double } from "concise-test";
 import { emptyTodo } from "../src/todo.js";
-import { TodoRepository } from "../src/todoRepository.js";
-import { beforeEach, describe, expect, it } from "concise-test";
+
+registerMock(
+  "./src/api.js", // NOTE: this needs to be relative to the cwd, see Exercise 1
+  {
+    saveTodo: double()
+  }
+);
+
+const { TodoRepository } = await import("../src/todoRepository.js");
+const { saveTodo } = await import("../src/api.js");
 
 import * as examples from "./list.shared.tests.js";
 
@@ -28,6 +37,11 @@ describe("TodoRepository", { tags: [ "doesn't match" ] }, () => {
       const repeatedTodo = { ...newTodo };
       expect(() => repository.add(repeatedTodo))
         .toThrow(new Error("todo already exists"));
+    });
+
+    it.only("calls saveTodo with the correct arguments", () => {
+      repository.add(newTodo);
+      expect(saveTodo).toBeCalledWith(newTodo);
     });
   });
 
