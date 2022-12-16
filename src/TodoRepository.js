@@ -1,3 +1,5 @@
+import { saveTodo } from "./api.js";
+
 export class TodoRepository {
   constructor() {
     this.todos = [];
@@ -10,6 +12,7 @@ export class TodoRepository {
     if (this.matchingTodo(todo)) {
       throw new Error("todo already exists");
     }
+    saveTodo(todo);
     this.todos = [...this.todos, todo];
     return true;
   }
